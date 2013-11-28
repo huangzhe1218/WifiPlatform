@@ -10,4 +10,10 @@ class UserController < ApplicationController
     end
   end
 
+  def logout
+    cookies.delete(:token)
+    redirect_to login_url
+
+  end
+
 end

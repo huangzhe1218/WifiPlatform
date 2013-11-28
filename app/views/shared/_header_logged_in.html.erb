@@ -4,10 +4,6 @@
       企业Wifi服务平台 
     </a>
     <ul id="user-links">
-      <li><%= link_to notifications_path do %>
-        <span class="notification-indicator <%= 'notification-indicator-unread' if @unread_count > 0 %>"><%= @unread_count %></span>
-      <% end %>
-      </li>
       <li class="name" > <%= current_user.mac %> </li>
       <li> <%= link_to t("logout"), logout_path %></li>
     </ul>

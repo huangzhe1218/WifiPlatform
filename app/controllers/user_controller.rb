@@ -1,0 +1,13 @@
+class UserController < ApplicationController
+  def login
+    user = User.find_by_mac(params[:mac])
+    if user
+      cookies.permanent[:token] = user.token
+      redirect_to :root
+    else
+      flash[:notice] = "login error,check the right answer"
+      redirect_to login_url
+    end
+  end
+
+end

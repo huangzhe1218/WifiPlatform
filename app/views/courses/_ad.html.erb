@@ -14,13 +14,13 @@
   <% end %>
   
   <div class="course-author">
-    <%= link_to course.user.mac, member_path(course.user.mac) %>
+    <%= course.user.mac  %>
   </div>
 
   <% if current_user && current_user == course.user %>
     <ul class="course-actions">
       <li><%= link_to t('edit'), edit_course_path(course) %></li>
-      <li><%= link_to t('delete'), {:controller=>"about", :action=>"main"}, :confirm => t('confirm_delete'), :method => :delete %></li>
+      <li><%= link_to t('delete'), course, :confirm => t('confirm_delete'), :method => :delete %></li>
     </ul>
   <% end %>
 

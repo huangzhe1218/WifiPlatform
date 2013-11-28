@@ -34,8 +34,7 @@ class ApplicationController < ActionController::Base
     redirect_to(session[:return_to] || default, *options)
     session[:return_to] = nil
   end
-
-
+  
   rescue_from ActiveRecord::RecordNotFound do |exception|
     case request.format.to_sym
     when :html

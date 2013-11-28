@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131125091716) do
+ActiveRecord::Schema.define(:version => 20131128082636) do
 
   create_table "courses", :force => true do |t|
     t.string   "name"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20131125091716) do
     t.boolean  "public"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "poster_url"
   end
 
   create_table "users", :force => true do |t|

@@ -31,13 +31,6 @@ class CoursesController < ApplicationController
     if @course.nil?
       redirect_to(:root, :notice => '抱歉，您访问的课程不存在')
     else
-      if params[:position].present?
-        @video = Video.where(:course_id => @course.id,:position => params[:position].to_i).first
-      elsif @course.videos.empty?
-        @video = nil
-      else
-        @video = Video.where(:course_id => @course.id,:position => 1).first
-      end
       session[:return_to] = request.url
     end
   end
@@ -56,7 +49,7 @@ class CoursesController < ApplicationController
     print params[:course][:public]
     respond_to do |format|
       if @course.save
-        format.html { redirect_to course_path(@course), :success => 'Course was successfully updated.' }
+        format.html { redirect_to :root, :notice => 'Course was successfully updated.' }
       else
         format.html { render :action => "edit" }
       end
@@ -101,6 +94,7 @@ class CoursesController < ApplicationController
     course.destroy
     redirect_to :root
   end
+
 
 
   private

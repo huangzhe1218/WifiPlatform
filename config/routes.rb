@@ -10,7 +10,6 @@ Wifiplatform::Application.routes.draw do
   delete "/:member_name/:course_name" => "courses#destroy"
   match '/update_poster/:course_id' => 'courses#update_poster', :as => :update_poster
   put '/course' => 'courses#update'
-  get "/:member_name/:course_name(/:position)" => "courses#show", :constraints => {:position => /\d+/} # "/:xxx/:xxx" will conflict with many things, so have to put bottom"
 
 
 

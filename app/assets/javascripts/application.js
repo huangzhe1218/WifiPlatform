@@ -13,13 +13,7 @@
 //= require jquery
 //= require jquery.atwho
 //= require jquery_ujs
-//= require jquery.ui.all
-//= require comments
 //= require courses
-//= require users
-//= require vendor/jquery_hotkeys
-//= require vendor/jquery.Jcrop.min
-//= require bootstrap
 
 var commenter = [];
 var commenter_exist= [];

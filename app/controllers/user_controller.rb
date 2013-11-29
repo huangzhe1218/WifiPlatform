@@ -1,3 +1,4 @@
+# encoding: utf-8
 class UserController < ApplicationController
   def login
     user = User.find_by_mac(params[:mac])
@@ -5,7 +6,7 @@ class UserController < ApplicationController
       cookies.permanent[:token] = user.token
       redirect_to :root
     else
-      flash[:notice] = "login error,check the right answer"
+      flash[:notice] = "登陆失败"
       redirect_to login_url
     end
   end
@@ -15,5 +16,6 @@ class UserController < ApplicationController
     redirect_to login_url
 
   end
+
 
 end

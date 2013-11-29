@@ -16,7 +16,7 @@ class CoursesController < ApplicationController
       course = Course.where(:user_id => params[:course][:user_id], :name => params[:course][:name]).first
     end
     if course.user != current_user
-      redirect_to :root, :notice => "抱歉，只有课程所有者才有此权限"
+      redirect_to :root, :notice => "抱歉，只有广告所有者才有此权限"
       return
     end
   end
@@ -29,7 +29,7 @@ class CoursesController < ApplicationController
 
   def show
     if @course.nil?
-      redirect_to(:root, :notice => '抱歉，您访问的课程不存在')
+      redirect_to(:root, :notice => '抱歉，您访问的广告不存在')
     else
       session[:return_to] = request.url
     end
@@ -49,7 +49,7 @@ class CoursesController < ApplicationController
     print params[:course][:public]
     respond_to do |format|
       if @course.save
-        format.html { redirect_to :root, :notice => 'Course was successfully updated.' }
+        format.html { redirect_to :root, :notice => '广告更新成功' }
       else
         format.html { render :action => "edit" }
       end
@@ -76,15 +76,15 @@ class CoursesController < ApplicationController
       end
     end
     if defined? @name_exsits
-      redirect_to_target_or_default :root, :notice => "你已经创建了这门课程"
+      redirect_to_target_or_default :root, :notice => "你已经创建相同的广告"
       return
     end
     course = Course.new(params[:course])
     course.name = name
     if course.save
-      redirect_to edit_course_path(course), :notice => "新课程创建成功！"
+      redirect_to edit_course_path(course), :notice => "新广告创建成功！"
     else
-      redirect_to_target_or_default :root, :notice => "新课程创建失败！"
+      redirect_to_target_or_default :root, :notice => "新广告创建失败！"
     end
   end
 
